@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eff5f0">
+  <title>HelloTalk IELTS Results</title>
+  <style>
+    :root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#173126;background:#eff5f0;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}body{margin:0}.top{height:66px;background:#fff;border-bottom:1px solid #dce7de;display:flex;align-items:center;justify-content:space-between;padding:0 max(calc((100vw - 1040px)/2),22px)}.brand{display:flex;gap:11px;align-items:center;font-size:16px;font-weight:800}.logo{width:34px;height:34px;border-radius:11px;background:#246346;color:#fff;display:grid;place-items:center;font-size:18px}.brand small{display:block;color:#728378;font-size:10px;letter-spacing:1.4px;margin-top:2px}.main{width:min(900px,100%);margin:0 auto;padding:48px 22px 70px}.eyebrow{font-size:10px;font-weight:800;color:#75867b;letter-spacing:1.5px;text-transform:uppercase}.title{font-size:30px;letter-spacing:-.8px;margin:8px 0}.muted{color:#728378;line-height:1.55}.card{background:#fff;border:1px solid #dce7de;border-radius:16px;padding:22px;box-shadow:0 12px 35px #193c2910}.search{max-width:560px;margin:26px auto 0}.form{display:flex;gap:10px;margin-top:18px}.form input{flex:1;min-width:0;border:1px solid #d5e1d7;border-radius:9px;padding:12px 13px;font:inherit}.form input:focus{outline:3px solid #24634620;border-color:#246346}.btn{border:0;border-radius:9px;padding:12px 18px;background:#246346;color:#fff;font:inherit;font-weight:750;cursor:pointer}.btn:hover{background:#194d34}.btn.secondary{background:#e8f0ea;color:#214c36}.badge.fail{background:#fbe8e5;color:#9a352e}.badge.pass{background:#e1f2e6;color:#1d6841}.notice{font-size:11px;margin-top:16px}.results{margin-top:28px}.result{margin:14px 0;padding:19px;border:1px solid #dce7de;border-radius:14px;background:#fff}.resulthead{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}.date{font-size:11px;color:#728378}.assessment{font-weight:700;margin-top:4px}.scorelabel{font-size:11px;color:#e3f0e6;text-transform:uppercase;letter-spacing:1.1px}.hero{background:#246346;border-radius:12px;padding:17px 20px;color:#fff;margin:16px 0}.hero.fail{background:#7b3330}.score{font-size:46px;line-height:1.1;font-weight:800;letter-spacing:-1.5px;margin-top:8px}.badge{display:inline-block;border-radius:99px;padding:6px 10px;font-size:11px;font-weight:800;background:#e7f3e9;color:#246346}.badge.pending{background:#f4f0de;color:#79621d}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.component{border:1px solid #e0e9e2;border-radius:10px;padding:12px}.component-name{font-size:10px;color:#728378}.component-band{font-size:24px;font-weight:750;margin:7px 0}.marks{font-size:10px;color:#728378;overflow-wrap:anywhere}.detail{margin-top:14px;border-top:1px solid #e8eee9;padding-top:12px}.detail-title{font-size:11px;font-weight:800;margin-bottom:8px}.detail-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.detail-item{background:#f5f8f5;border-radius:8px;padding:8px}.detail-item span{display:block;color:#728378;font-size:9px}.detail-item b{font-size:13px}.feedback{font-size:12px;line-height:1.5;margin-top:12px}.empty,.error{padding:18px 8px;text-align:center;color:#728378;font-size:13px}.error{color:#a0443e}.footer{text-align:center;margin:22px auto 0;max-width:600px;font-size:10px;color:#849188;line-height:1.55}.certificate-action{margin-top:14px}@media(max-width:620px){.top{padding:0 16px}.main{padding:34px 15px 55px}.title{font-size:26px}.form{flex-direction:column}.form .btn{width:100%}.grid{grid-template-columns:repeat(2,1fr)}.detail-grid{grid-template-columns:repeat(3,1fr)}.resulthead{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="brand"><div class="logo">H</div><div>HelloTalk IELTS<small>STUDENT RESULTS</small></div></div></header>
+  <main class="main">
+    <section class="card search">
+      <div class="eyebrow">HelloTalk IELTS students</div>
+      <h1 class="title">Find your result</h1>
+      <p class="muted">Enter your first name to see your available assessment results.</p>
+      <form class="form" id="search-form"><input name="first_name" autocomplete="given-name" placeholder="Your first name" aria-label="First name" required><button class="btn">Search results</button></form>
+      <div class="notice muted">Anyone with the portal link can search a first name. Students with the same first name may see each other’s matching results.</div>
+    </section>
+    <section class="results" id="results" aria-live="polite"></section>
+    <div class="footer">These are estimated course practice results, not official IELTS scores. Pass means a score was recorded in all four course exams; a missing exam is shown as Fail. Approximate English levels are not an exact CEFR equivalence.</div>
+  </main>
+  <script>window.PORTAL_CONFIG={supabaseUrl:'https://yelrwflvswkaeaqakjin.supabase.co',supabasePublishableKey:'sb_publishable_njCTjdVg5KLN4BF4_8pU4w_L06QhZeV'};</script>
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+    const {supabaseUrl,supabasePublishableKey}=window.PORTAL_CONFIG;
+    const client=createClient(supabaseUrl,supabasePublishableKey);
+    const out=document.querySelector('#results');
+    const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const band=value=>value==null?'—':Number(value).toFixed(1).replace(/\.0$/,'');
+    const date=value=>value?new Date(value+'T00:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'—';
+    const labels={listening:'Listening',reading:'Reading',writing:'Writing',speaking:'Speaking'};
+    function resultCard(row){
+      const hasOverall=row.overall_band!=null;
+      const components=Object.keys(labels).map(key=>`<div class="component"><div class="component-name">${labels[key]}</div><div class="component-band">${band(row[key+'_band'])}</div><div class="marks">Marks · ${row[key+'_mark']==null?'—':esc(row[key+'_mark'])}</div></div>`).join('');
+      const criteria=row.speaking_criteria||{};
+      const criteriaLabels=[['Fluency & Coherence','fluency_coherence'],['Lexical Resource','lexical_resource'],['Grammar','grammatical_range_accuracy'],['Pronunciation','pronunciation']];
+      const criteriaHtml=criteriaLabels.some(([,key])=>criteria[key]!=null)?`<div class="detail"><div class="detail-title">Speaking criteria</div><div class="detail-grid">${criteriaLabels.map(([label,key])=>`<div class="detail-item"><span>${label}</span><b>${criteria[key]==null?'—':esc(criteria[key])}/9</b></div>`).join('')}</div>${row.speaking_activity_mark==null?'':`<div class="feedback"><b>Speaking activity mark:</b> ${esc(row.speaking_activity_mark)}/100</div>`}</div>`:'';
+      const rounds=row.speaking_rounds||{};
+      const roundKeys=['r1','r2','r3','r4','r5'];
+      const roundsHtml=roundKeys.some(key=>rounds[key]!=null)?`<div class="detail"><div class="detail-title">Speaking activity rounds</div><div class="detail-grid">${roundKeys.map((key,index)=>`<div class="detail-item"><span>Round ${index+1}</span><b>${rounds[key]==null?'—':esc(rounds[key])}</b></div>`).join('')}</div></div>`:'';
+      const componentKey=Object.keys(labels).find(key=>row[key+'_band']!=null)||Object.keys(labels).find(key=>(row[key+'_mark']||'').toLowerCase()==='absent');
+      const state=row.status==='Pass'?'pass':row.status==='Fail'?'fail':'pending';
+      const stateBadge=row.status==='Pass'||row.status==='Fail'?`<span class="badge ${state}">${esc(row.status)}</span>`:row.title==='IELTS Course Final Result'?`<span class="badge pending">Overall result pending</span>`:'';
+      const scoreLabel=hasOverall?'Overall IELTS course band':componentKey?`Estimated IELTS ${labels[componentKey]} band`:'Overall IELTS band';
+      const scoreValue=hasOverall?row.overall_band:componentKey?row[componentKey+'_band']:'—';
+      const certificateFiles={April:'April.pdf',Huryra:'Huryra.pdf',MD:'MD-Salik.pdf',Nova:'Nova.pdf',Sajad:'Sajad-Mukhlis.pdf'};
+      const certificateFile=certificateFiles[row.student_first_name];
+      const certificateButton=hasOverall&&row.status==='Pass'&&certificateFile?`<a class="btn secondary certificate-action" href="certificates/${certificateFile}" download>Download course certificate (PDF)</a>`:'';
+      return `<article class="result"><div class="resulthead"><div><div class="date">${date(row.assessment_date)}</div><div class="assessment">${esc(row.title||'Assessment')}</div></div>${stateBadge}</div><div class="hero ${state==='fail'?'fail':''}"><div class="scorelabel">${scoreLabel}</div><div class="score">${band(scoreValue)}</div>${hasOverall?`<div class="scorelabel" style="margin-top:8px">Approximate English level: ${esc(englishLevel(row.overall_band))}</div>`:''}</div><div class="grid">${components}</div>${criteriaHtml}${roundsHtml}${row.teacher_note?`<div class="feedback"><b>Teacher feedback:</b> ${esc(row.teacher_note)}</div>`:''}${certificateButton}</article>`;
+    }
+    function englishLevel(value){const score=Number(value);if(score>=8.5)return 'C2 (approx.)';if(score>=7)return 'C1 (approx.)';if(score>=5.5)return 'B2 (approx.)';if(score>=4)return 'B1 (approx.)';return 'Below B1 (approx.)';}
+    document.querySelector('#search-form').addEventListener('submit',async event=>{
+      event.preventDefault();
+      const name=new FormData(event.currentTarget).get('first_name').trim();
+      out.innerHTML='<div class="empty">Searching…</div>';
+      const {data,error}=await client.rpc('search_results_by_first_name',{search_first_name:name});
+      if(error){out.innerHTML='<div class="error">Search is temporarily unavailable. Please try again later.</div>';return;}
+      if(!data?.length){out.innerHTML='<div class="empty">No results found for that first name yet.</div>';return;}
+      const ordered=[...data].sort((a,b)=>Number(b.title==='IELTS Course Final Result')-Number(a.title==='IELTS Course Final Result'));
+      out.innerHTML=`<div class="eyebrow">Results for ${esc(name)} · ${data.length} ${data.length===1?'assessment':'assessments'}</div>${ordered.map(resultCard).join('')}`;
+    });
+  </script>
+</body>
+</html>
+
