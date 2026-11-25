@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101b34">
+<title>Professional English · Group Results 2026</title>
+<style>
+:root{color-scheme:light;--ink:#15213b;--muted:#65718a;--line:#dce4f0;--paper:#fff;--bg:#f3f6fb;--blue:#3158cf;--mint:#24a78a;--gold:#c38b12}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#edf2fb 0,#f8f9fc 52%,#edf6f3 100%);font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);min-height:100vh}.page{max-width:920px;margin:auto;padding:30px 18px 48px}.hero{position:relative;overflow:hidden;border-radius:26px;background:linear-gradient(120deg,#101b34,#1c3158 68%,#173a4a);color:#fff;padding:34px clamp(22px,5vw,48px);box-shadow:0 18px 48px #16274624}.hero:after{content:"";position:absolute;width:300px;height:300px;border:1px solid #ffffff17;border-radius:50%;right:-105px;bottom:-205px;box-shadow:0 0 0 26px #ffffff08,0 0 0 53px #ffffff06}.brand{font-size:12px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;color:#9be7d4}.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.05;margin:10px 0}.hero p{color:#d4dff2;max-width:620px;line-height:1.6;margin:0}.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.chip{border:1px solid #ffffff2c;background:#ffffff0d;border-radius:99px;padding:7px 11px;color:#e8effc;font-size:12px;font-weight:700}.panel{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:18px;box-shadow:0 8px 25px #15213b0a}.panel h2{font-size:19px;margin:0 0 6px}.helper{font-size:13px;color:var(--muted);margin:0 0 15px}.search-row{display:flex;gap:10px}.search-wrap{position:relative;flex:1}.search-wrap span{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:18px}.search-wrap input{width:100%;height:52px;border:1px solid #cbd6e6;border-radius:13px;padding:0 15px 0 45px;font-size:16px;color:var(--ink);outline:none}.search-wrap input:focus{border-color:var(--blue);box-shadow:0 0 0 4px #3158cf18}.search-row button{border:0;border-radius:13px;background:var(--blue);color:white;padding:0 18px;font-weight:800;font-size:14px;cursor:pointer}.search-row button:hover{filter:brightness(1.08)}.result{margin-top:14px;min-height:46px}.empty{padding:13px 15px;border-radius:12px;background:#f4f6fa;color:var(--muted);font-size:14px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:16px 17px;background:#fff}.card.top{border-color:#e7ca77;background:linear-gradient(110deg,#fffaf0,#fff)}.group{font-size:15px;font-weight:850}.caption{color:var(--muted);font-size:12px;margin-top:4px}.score{font-size:25px;font-weight:900;letter-spacing:-.04em;white-space:nowrap;color:#213c7b}.top .score{color:#a56f00}.rank{display:inline-block;margin-left:5px;color:#946000;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.foot{font-size:12px;line-height:1.6;color:var(--muted);padding:16px 4px 0}.none{font-size:14px;color:var(--muted);padding:14px}.hide{display:none!important}@media(max-width:600px){.page{padding:16px 12px 30px}.hero{border-radius:20px;padding:25px 21px}.panel{padding:17px}.search-row{flex-direction:column}.search-row button{height:46px}.cards{grid-template-columns:1fr}.score{font-size:23px}}
+</style>
+<style>.status{display:inline-block;border-radius:999px;padding:5px 8px;margin-top:8px;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}.pass{background:#e7f7ef;color:#167047}.fail{background:#fff1e8;color:#a54e13}.blocked{background:#ffe8eb;color:#ac2639}.place{font-size:12px;font-weight:850;color:#4d5b78;margin-top:5px}.penalty{color:#a54e13}</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <div class="brand">HelloTalk · Professional English</div>
+    <h1>Group Results</h1>
+    <p>Search by your group name or group number to see your final score, pass/fail status, and position.</p>
+    <div class="meta"><span class="chip">Live Assignment Presentation 2026</span><span class="chip">20 groups</span><span class="chip">Scores out of 100</span></div>
+  </header>
+  <section class="panel" aria-labelledby="lookupTitle">
+    <h2 id="lookupTitle">Find your result</h2>
+    <p class="helper">Type a group name, such as “Ubuntu Group”, or a serial number, such as “18”.</p>
+    <div class="search-row"><label class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" placeholder="Search group name or number" aria-label="Search group name or number"></label><button id="clear" type="button">Clear search</button></div>
+    <div id="result" class="result" aria-live="polite"></div>
+  </section>
+  <p class="foot">Pass rule: final score must be above 65%. Blocked groups are not ranked. Ubuntu Group’s result includes the five-mark AI penalty noted on its report card. Groups 19 and 20 were not named in the roster image, so they appear by number. For any score question, contact your teachers.</p>
+</main>
+<script>
+const groups=[
+  {name:"Ubuntu Group",score:69.5,raw:74.5,deduction:5,search:"ubuntu group 1 one",rank:7},
+  {name:"Linux Group",score:80,search:"linux group 2 two",rank:2},
+  {name:"Windows Warriors",score:75.5,search:"windows warriors group 3 three",rank:3},
+  {name:"Cloud Pioneers",score:60,search:"cloud pioneers group 4 four",rank:10},
+  {name:"Code Crafters",score:30,search:"code crafters group 5 five",blocked:true},
+  {name:"Digital Bridge",score:64.5,search:"digital bridge group 6 six",rank:8},
+  {name:"Synergy Squad",score:45,search:"synergy squad group 7 seven",rank:15},
+  {name:"Global Connect",score:51,search:"global connect group 8 eight",rank:11},
+  {name:"Future Forward",score:71.5,search:"future forward group 9 nine",rank:4},
+  {name:"Team Horizon",score:70,search:"team horizon group 10 ten",rank:6},
+  {name:"Byte Builders",score:35,search:"byte builders group 11 eleven",blocked:true},
+  {name:"NextGen Network",score:48,search:"nextgen network group 12 twelve",rank:13},
+  {name:"Visionary Voices",score:35,search:"visionary voices group 13 thirteen",blocked:true},
+  {name:"Smart Solutions",score:33,search:"smart solutions group 14 fourteen",blocked:true},
+  {name:"Team Catalyst",score:49,search:"team catalyst group 15 fifteen",rank:12},
+  {name:"Innovation League",score:46,search:"innovation league group 16 sixteen",rank:14},
+  {name:"The Communicators",score:61.5,search:"the communicators group 17 seventeen",rank:9},
+  {name:"Enterprise Edge",score:93.5,search:"enterprise edge group 18 eighteen",rank:1},
+  {name:"Group 19",score:30,search:"group 19 nineteen",blocked:true},
+  {name:"Group 20",score:71.5,search:"group 20 twenty",rank:4}
+].map(g=>({...g,status:g.blocked?"BLOCKED · high AI use":g.score>65?"PASS":"FAIL"}));
+const input=document.getElementById("search"),out=document.getElementById("result");
+function render(){const q=input.value.trim().toLowerCase();if(!q){out.innerHTML='<div class="empty">Enter your group name or serial number to view the result.</div>';return}const found=groups.filter(g=>(g.name+" "+g.search).toLowerCase().includes(q));if(!found.length){out.innerHTML='<div class="empty">No matching group found. Check the spelling or try the group number.</div>';return}out.innerHTML='<div class="cards">'+found.map(g=>'<article class="card '+(g.rank===1?'top':'')+'"><div><div class="group">'+g.name+(g.rank===1?'<span class="rank">Topper</span>':'')+'</div><div class="place">'+(g.blocked?'Not ranked · AI block':'Position '+g.rank+(g.rank===1?' · 1st':g.rank===2?' · 2nd':g.rank===3?' · 3rd':g.rank===4?' · tied':''))+'</div><span class="status '+(g.blocked?'blocked':g.score>65?'pass':'fail')+'">'+g.status+'</span>'+(g.deduction?'<div class="caption penalty">74.5% − 5-point AI penalty = 69.5%</div>':'')+'</div><div class="score">'+Number(g.score).toFixed(1)+'%</div></article>').join('')+'</div>'}
+input.addEventListener("input",render);document.getElementById("clear").addEventListener("click",()=>{input.value="";render();input.focus()});render();
+</script>
+</body>
+</html>
+
